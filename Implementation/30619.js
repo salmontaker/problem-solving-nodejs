@@ -4,14 +4,8 @@ const input = require('fs')
   .trim()
   .split('\n')
 
-const benefit = (list) =>
-  [...list].reduce((acc, value, idx) => {
-    return (acc += value * idx)
-  })
-
 const N = Number(input[0])
 const A = [0, ...input[1].split(' ').map(Number)]
-const current = benefit(A)
 const answer = []
 
 input.slice(3).map((query) => {
@@ -34,11 +28,7 @@ input.slice(3).map((query) => {
     B[pos[i]] = sorted[i]
   }
 
-  if (current < benefit(B)) {
-    answer.push(B.slice(1).join(' '))
-  } else {
-    answer.push(A.slice(1).join(' '))
-  }
+  answer.push(B.slice(1).join(' '))
 })
 
 console.log(answer.join('\n'))
